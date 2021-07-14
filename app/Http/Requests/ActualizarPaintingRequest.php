@@ -26,7 +26,7 @@ class ActualizarPaintingRequest extends FormRequest
          return [
            'autor' => "required",
            'precio' => "required",
-           'fecha_entrada' => "required"
+           'entrega' => "required"
         ];
     }
 }

@@ -12,7 +12,7 @@ class Painting extends Model
       protected $fillable = [
         'autor',
         'precio',
-        'fecha_entrada',
+        'entrega',
     ];
 
     public function shop(){

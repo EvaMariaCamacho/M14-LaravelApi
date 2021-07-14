@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Painting;
 use Illuminate\Http\Request;
-use App\Http\Requests\GuardarPaitingRequest;
+use App\Http\Requests\GuardarPaintingRequest;
 use App\Http\Requests\ActualizarPaintingRequest;
+use App\Http\Resources\PaintingResource;
 
 class PaintingController extends Controller
 {
@@ -16,7 +17,9 @@ class PaintingController extends Controller
      */
     public function index()
     {
-       return Painting::all();
+      //return Painting::all();
+
+      return PaintingResource::collection(Painting::all());
     }
 
 
@@ -28,12 +31,17 @@ class PaintingController extends Controller
      */
     public function store(GuardarPaintingRequest $request)
     {
-        Painting::create($request->all());
+        //Painting::create($request->all());
 
-        return response()->json([
-            'res' => true,
-            'msg' => 'Painting guardado correctamente'
-        ]);
+       // return response()->json([
+      //      'res' => true,
+      //     'msg' => 'Painting guardado correctamente'
+       // ]);
+        return (new PaintingResource(Painting::create($request->all())))
+            ->additional(['msg'=>'Guardado correctamente'])
+            ->response()
+            ->setStatusCode(202);
+       
     }
 
         /**
@@ -42,12 +50,13 @@ class PaintingController extends Controller
      * @param  \App\Models\Painting  $painting
      * @return \Illuminate\Http\Response
      */
-    public function edit(Painting $painting)
+    public function show(Painting $painting)
     {
-        return response()->json([
-            'res' => true,
-            'painting' => $painting
-        ],200);
+      //  return response()->json([
+      //      'res' => true,
+      //      'painting' => $painting
+      //  ],200);
+        return new PaintingResource($painting);
     }
 
     /**
@@ -59,11 +68,18 @@ class PaintingController extends Controller
      */
     public function update(ActualizarPaintingRequest $request, Painting $painting)
     {
-        $painting-> update($request ->all());
-        return response()->json([
-            'res' =>true,
-            'mensaje' =>'Painting Actualizado correctamente'
-        ],200);
+        //$painting-> update($request ->all());
+        //return response()->json([
+        //    'res' =>true,
+       //     'mensaje' =>'Painting Actualizado correctamente'
+       // ],200);
+      
+       $painting->update($request->all());
+        
+        return (new PaintingResource($painting))
+        ->additional(['msg'=>'Actualizado correctamente'])
+        ->response()
+        ->setStatusCode(202);
     }
 
     /**
@@ -74,11 +90,17 @@ class PaintingController extends Controller
      */
     public function destroy(Painting $painting)
     {
-        $painting ->delete();
+       // $painting ->delete();
 
-        return response()->json([
-            'res' =>true,
-            'mensaje' =>'Shop eliminado correctamente'
-        ],200);
+        //return response()->json([
+        //    'res' =>true,
+        //    'mensaje' =>'Shop eliminado correctamente'
+        //],200);
+
+         $painting->delete();
+        return (new PaintingResource($painting))
+            ->additional(['msg'=>'Eliminado correctamente'])
+            ->response()
+            ->setStatusCode(202);
     }
 }

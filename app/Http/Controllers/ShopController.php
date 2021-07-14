@@ -45,14 +45,13 @@ class ShopController extends Controller
        ;
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Shop  $shop
      * @return \Illuminate\Http\Response
      */
-    public function edit(Shop $shop)
+    public function show(Shop $shop)
     {
       //  return response()->json([
       //      'res' => true,

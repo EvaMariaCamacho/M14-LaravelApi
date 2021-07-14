@@ -24,12 +24,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Route Shop Controller
 
-Route::get('shops', [ShopController::class, 'index']);
-Route::post('shops', [ShopController::class, 'store']);
-Route::get('shops/{shop}', [ShopController::class, 'show']);
-Route::put('shops/{shop}', [ShopController::class, 'update']);
-Route::delete('shops/{shop}', [ShopController::class, 'destroy']);
-Route::resource('shop', App\Http\Controllers\ShopController::class);
+//Route::get('shops', [ShopController::class, 'index']);
+//Route::post('shops', [ShopController::class, 'store']);
+//Route::get('shops/{shop}', [ShopController::class, 'show']);
+//Route::put('shops/{shop}', [ShopController::class, 'update']);
+//Route::delete('shops/{shop}', [ShopController::class, 'destroy']);
 
 
 //Route Painting Controller
@@ -44,4 +43,5 @@ Route::post('registro', [AutenticarController::class, 'registro']);
 Route::post('acceso', [AutenticarController::class, 'acceso']);
 Route::group(['middleware' => ['auth:sanctum']], function (){
     Route::post('cerrarsesion', [AutenticarController::class, 'cerrarSesion']);
+    Route::apiResource('shops', App\Http\Controllers\ShopController::class);
 });
