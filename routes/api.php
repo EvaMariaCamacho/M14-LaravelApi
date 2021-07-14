@@ -41,3 +41,7 @@ Route::put('paintings/{painting}', [PaintingController::class, 'update']);
 Route::delete('paintings/{painting}', [PaintingController::class, 'destroy']);
 
 Route::post('registro', [AutenticarController::class, 'registro']);
+Route::post('acceso', [AutenticarController::class, 'acceso']);
+Route::group(['middleware' => ['auth:sanctum']], function (){
+    Route::post('cerrarsesion', [AutenticarController::class, 'cerrarSesion']);
+});
