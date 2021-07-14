@@ -33,15 +33,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Route Painting Controller
 
-Route::get('paintings', [PaintingController::class, 'index']);
-Route::post('paintings', [PaintingController::class, 'store']);
-Route::get('paintings/{painting}', [PaintingController::class, 'show']);
-Route::put('paintings/{painting}', [PaintingController::class, 'update']);
-Route::delete('paintings/{painting}', [PaintingController::class, 'destroy']);
+//Route::get('paintings', [PaintingController::class, 'index']);
+//Route::post('paintings', [PaintingController::class, 'store']);
+//Route::get('paintings/{painting}', [PaintingController::class, 'show']);
+//Route::put('paintings/{painting}', [PaintingController::class, 'update']);
+//Route::delete('paintings/{painting}', [PaintingController::class, 'destroy']);
+
+
+//Route Registros / acceso autenticar
 
 Route::post('registro', [AutenticarController::class, 'registro']);
 Route::post('acceso', [AutenticarController::class, 'acceso']);
 Route::group(['middleware' => ['auth:sanctum']], function (){
     Route::post('cerrarsesion', [AutenticarController::class, 'cerrarSesion']);
     Route::apiResource('shops', App\Http\Controllers\ShopController::class);
+    Route::apiResource('paintings', App\Http\Controllers\PaintingController::class);
 });
