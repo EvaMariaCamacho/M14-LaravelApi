@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\PaintingController;
+use App\Http\Controllers\AutenticarController;
 
 
 /*
@@ -38,3 +39,5 @@ Route::post('paintings', [PaintingController::class, 'store']);
 Route::get('paintings/{painting}', [PaintingController::class, 'show']);
 Route::put('paintings/{painting}', [PaintingController::class, 'update']);
 Route::delete('paintings/{painting}', [PaintingController::class, 'destroy']);
+
+Route::post('registro', [AutenticarController::class, 'registro']);
