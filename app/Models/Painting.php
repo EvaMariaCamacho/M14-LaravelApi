@@ -11,6 +11,7 @@ class Painting extends Model
 
       protected $fillable = [
         'autor',
+        'cuadro',
         'precio',
         'entrega',
     ];

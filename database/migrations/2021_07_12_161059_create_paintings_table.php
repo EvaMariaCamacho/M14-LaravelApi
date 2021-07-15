@@ -16,6 +16,7 @@ class CreatePaintingsTable extends Migration
         Schema::create('paintings', function (Blueprint $table) {
             $table->id();
             $table->string('autor');
+            $table->string('cuadro');
             $table->string('precio');
             $table->timestamp('entrega');
             $table->timestamps();
