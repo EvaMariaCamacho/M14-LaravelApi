@@ -19,7 +19,10 @@ class ShopController extends Controller
     {
         //return Shop::all();
 
-        return ShopResource::collection(Shop::all());
+        //return ShopResource::collection(Shop::all());
+
+        $shops = Shop::all();
+        return response()->json($shops, 200);
 
     }
 
@@ -103,5 +106,9 @@ class ShopController extends Controller
             ->additional(['msg'=>'shop eliminado correctamente'])
             ->response()
             ->setStatusCode(202);
+    }
+
+    public function spa(){
+        return view('welcome');
     }
 }

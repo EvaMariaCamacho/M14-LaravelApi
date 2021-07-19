@@ -20,6 +20,7 @@ class ShopResource extends JsonResource
         return [
         'id' => $this->id,
         'nombre' =>Str::upper ($this->nombre),
+        'capacidad' => $this->capacidad,
      ];
     }
 }
