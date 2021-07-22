@@ -1,9 +1,11 @@
-require('./bootstrap');
+import { createApp } from 'vue'
 
-window.Vue = require('vue').default;
+require('./bootstrap')
+import App from './App.vue'
+import axios from 'axios'
+import router from './router'
 
-Vue.component('comments-index', require('./components/Comments/index.vue'). default)
-
-const app = new Vue({
-    el: '#app'
-});
+const app = createApp(App)
+app.config.globalProperties.$axios = axios;
+app.use(router)
+app.mount('#app')
