@@ -13,8 +13,9 @@ class ShopVueController extends Controller
     // all shops
     public function index()
     {
-        $shops = Shop::all()->toArray();
-        return array_reverse($shops);
+        dd (":)");
+        $shops = Shop::all();
+        return response()->json($shops, 200);
     }
 
     // add shop

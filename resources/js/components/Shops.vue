@@ -32,17 +32,18 @@
 export default {
     data() {
         return {
-            shop: {}
+            shop: []
         }
     },
     created() {
         this.$axios.get('/sanctum/csrf-cookie').then(response => {
             this.$axios.get('/shopvue')
                 .then(response => {
+                    console.log(response)
                     this.shopvue = response.data;
                 })
                 .catch(function (error) {
-                    console.error(error);
+                    console.log(error);
                 });
         })
     },

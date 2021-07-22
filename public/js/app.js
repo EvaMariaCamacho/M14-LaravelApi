@@ -18165,6 +18165,8 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       this.$axios.get('/sanctum/csrf-cookie').then(function (response) {
         _this.$axios.post('/api/logout').then(function (response) {
+          console.log(response);
+
           if (response.data.success) {
             _this.$router.push({
               name: '/'
@@ -18173,7 +18175,7 @@ __webpack_require__.r(__webpack_exports__);
             console.log(response);
           }
         })["catch"](function (error) {
-          console.error(error);
+          console.log(error);
         });
       });
     }
@@ -18279,7 +18281,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      shop: {}
+      shop: []
     };
   },
   created: function created() {
@@ -18287,9 +18289,10 @@ __webpack_require__.r(__webpack_exports__);
 
     this.$axios.get('/sanctum/csrf-cookie').then(function (response) {
       _this.$axios.get('/shopvue').then(function (response) {
+        console.log(response);
         _this.shopvue = response.data;
       })["catch"](function (error) {
-        console.error(error);
+        console.log(error);
       });
     });
   },

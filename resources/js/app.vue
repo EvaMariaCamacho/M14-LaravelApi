@@ -54,6 +54,7 @@ export default {
             this.$axios.get('/sanctum/csrf-cookie').then(response => {
                 this.$axios.post('/api/logout')
                     .then(response => {
+                         console.log(response)
                         if (response.data.success) {
                             this.$router.push({name: '/'})
                         } else {
@@ -61,7 +62,7 @@ export default {
                         }
                     })
                     .catch(function (error) {
-                        console.error(error);
+                        console.log(error);
                     });
             })
         }

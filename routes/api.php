@@ -28,7 +28,7 @@ Route::post('login', [UserController::class, 'login']);
 Route::post('register', [UserController::class, 'register']);
 Route::post('logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::group(['prefix' => 'shopvue', 'middleware' => 'auth:sanctum'], function () {
+Route::group(['prefix' => 'shopvue'], function () {
     Route::get('/', [ShopVueController::class, 'index']);
     Route::post('add', [ShopVueController::class, 'add']);
     Route::get('edit/{id}', [ShopVueController::class, 'edit']);
